@@ -195,7 +195,7 @@ const App = () => {
               
               <div className="sans" style={{ display: 'flex', flexWrap: 'wrap', gap: 32, fontSize: 10, letterSpacing: '0.3em', color: 'rgba(255,255,255,0.2)', textTransform: 'uppercase', borderLeft: '1px solid rgba(255,255,255,0.05)', paddingLeft: 32 }}>
                 <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}><Clock size={11} strokeWidth={1} /> ai video production</span>
-                <span style={{ color: 'rgba(255,255,255,0.4)', fontStyle: 'italic' }}>trainee: soumya</span>
+                <span style={{ color: 'rgba(255,255,255,0.4)', fontStyle: 'italic' }}>trainee: somya</span>
               </div>
             </div>
 

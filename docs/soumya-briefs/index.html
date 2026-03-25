@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creative Task Briefs — Soumya | Content Studio Labs</title>
+  <meta name="description" content="AI video production creative task briefs for trainee Soumya, by Content Studio Labs." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #050505;
+      color: rgba(255,255,255,0.9);
+      font-family: 'Inter', -apple-system, sans-serif;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+    .serif { font-family: 'Playfair Display', Georgia, serif; }
+    .sans { font-family: 'Inter', -apple-system, sans-serif; }
+
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(to right, #a78bfa, #60a5fa, #4ade80);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Layout */
+    .container {
+      max-width: 1152px;
+      margin: 0 auto;
+      padding: 80px 40px;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Header */
+    .header { margin-bottom: 96px; }
+    .header-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 48px;
+    }
+    .header-left { max-width: 640px; }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 48px;
+    }
+    .brand-icon {
+      width: 20px; height: 20px;
+      background: rgba(255,255,255,0.8);
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 3px;
+    }
+    .brand-icon-inner { width: 8px; height: 8px; background: #000; }
+    .brand-name {
+      font-size: 11px;
+      letter-spacing: 0.5em;
+      color: rgba(255,255,255,0.3);
+      text-transform: uppercase;
+    }
+    .title-block { margin-bottom: 40px; text-transform: lowercase; }
+    .title-main {
+      font-size: clamp(56px, 10vw, 128px);
+      font-weight: 300;
+      letter-spacing: -3px;
+      line-height: 0.85;
+    }
+    .title-sub {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 340px;
+      font-size: clamp(18px, 2.5vw, 24px);
+      font-style: italic;
+      opacity: 0.4;
+      padding: 0 4px;
+    }
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      color: rgba(255,255,255,0.2);
+      text-transform: uppercase;
+      border-left: 1px solid rgba(255,255,255,0.05);
+      padding-left: 32px;
+    }
+    .meta-row .meta-highlight { color: rgba(255,255,255,0.4); font-style: italic; }
+    .meta-icon { vertical-align: middle; margin-right: 6px; }
+    .params-box {
+      background: #0a0a0c;
+      border: 1px solid rgba(255,255,255,0.04);
+      padding: 32px;
+      border-radius: 32px;
+      max-width: 280px;
+    }
+    .params-label {
+      font-size: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.4em;
+      color: rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .params-text {
+      font-size: 13px;
+      font-style: italic;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.7;
+      text-transform: lowercase;
+    }
+
+    /* Navigation */
+    .nav {
+      display: flex;
+      gap: 48px;
+      margin-bottom: 80px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.02);
+      overflow-x: auto;
+    }
+    .nav-btn {
+      background: none;
+      border: none;
+      border-bottom: 1px solid transparent;
+      cursor: pointer;
+      padding: 0 0 16px;
+      font-size: 10px;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      color: rgba(255,255,255,0.2);
+      transition: color 0.3s, border-color 0.3s;
+      white-space: nowrap;
+    }
+    .nav-btn:hover { color: rgba(255,255,255,0.4); }
+    .nav-btn.active {
+      color: rgba(255,255,255,0.8);
+      border-bottom-color: rgba(255,255,255,0.4);
+    }
+
+    /* Day sections */
+    .day-section { margin-bottom: 96px; display: none; }
+    .day-section.active { display: block; }
+    .day-header { margin-bottom: 48px; }
+    .day-title-row { display: flex; align-items: center; gap: 24px; margin-bottom: 8px; }
+    .day-title {
+      font-size: 36px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.9);
+      letter-spacing: -1px;
+      text-transform: lowercase;
+    }
+    .day-line {
+      height: 1px;
+      flex: 1;
+      background: linear-gradient(to right, rgba(255,255,255,0.05), transparent);
+    }
+    .day-date {
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+    }
+
+    /* Cards grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
+      gap: 32px;
+    }
+
+    /* Card */
+    .card {
+      position: relative;
+      background: #0a0a0c;
+      border: 1px solid rgba(255,255,255,0.03);
+      border-radius: 24px;
+      padding: 32px;
+      transition: all 0.7s;
+      overflow: hidden;
+    }
+    .card:hover { border-color: rgba(255,255,255,0.1); }
+    .card:hover .glow { opacity: 0.15 !important; }
+    .card:hover .icon-ring { border-color: rgba(255,255,255,0.1) !important; }
+    .glow {
+      position: absolute;
+      right: -48px; top: -48px;
+      width: 192px; height: 192px;
+      border-radius: 50%;
+      filter: blur(110px);
+      opacity: 0.07;
+      transition: opacity 0.7s;
+      pointer-events: none;
+    }
+    .card-inner { position: relative; z-index: 10; }
+    .card-top { display: flex; align-items: center; gap: 20px; margin-bottom: 32px; }
+    .icon-ring {
+      padding: 16px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.01);
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: border-color 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .icon-ring svg {
+      width: 18px; height: 18px;
+      stroke: rgba(255,255,255,0.6);
+      stroke-width: 1;
+      fill: none;
+    }
+    .task-number {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.4em;
+      color: rgba(255,255,255,0.2);
+      font-weight: 300;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .card-title {
+      font-size: 24px;
+      color: rgba(255,255,255,0.8);
+      text-transform: lowercase;
+      margin: 0;
+      font-weight: 400;
+    }
+    .card-tagline {
+      font-size: 14px;
+      font-style: italic;
+      color: rgba(255,255,255,0.3);
+      text-transform: lowercase;
+      margin: 4px 0 0;
+    }
+    .section-label {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: rgba(255,255,255,0.2);
+      font-weight: 300;
+      margin-bottom: 16px;
+    }
+    .script-lines { display: flex; flex-direction: column; gap: 12px; }
+    .script-line {
+      font-size: 14px;
+      line-height: 1.7;
+      font-weight: 200;
+      font-style: italic;
+      color: rgba(255,255,255,0.6);
+    }
+    .notes-section {
+      padding-top: 32px;
+      margin-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.03);
+    }
+    .notes-label { margin-bottom: 20px; }
+    .notes-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .note-item {
+      display: flex;
+      gap: 16px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      font-weight: 200;
+      line-height: 1.6;
+      text-transform: lowercase;
+    }
+    .note-dot {
+      margin-top: 8px;
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      flex-shrink: 0;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 128px;
+      padding-top: 48px;
+      border-top: 1px solid rgba(255,255,255,0.03);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 32px;
+    }
+    .footer-copy {
+      color: rgba(255,255,255,0.1);
+      font-size: 8px;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+    }
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .footer-link {
+      color: rgba(255,255,255,0.2);
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .footer-link:hover { color: #fff; }
+    .footer-link.highlight { color: rgba(255,255,255,0.4); }
+    .footer-dot {
+      width: 2px; height: 2px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .container { padding: 48px 20px; }
+      .header { margin-bottom: 64px; }
+      .brand { margin-bottom: 32px; }
+      .title-block { margin-bottom: 24px; }
+      .nav { gap: 24px; margin-bottom: 48px; }
+      .params-box { max-width: 100%; }
+      .cards-grid { gap: 20px; }
+      .card { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-inner">
+        <div class="header-left">
+          <div class="brand">
+            <div class="brand-icon"><div class="brand-icon-inner"></div></div>
+            <span class="brand-name sans">contentstudiolabs.ai</span>
+          </div>
+          <div class="title-block">
+            <h1 class="serif gradient-text title-main">creative</h1>
+            <div class="serif title-sub" id="titleSub"></div>
+          </div>
+          <div class="meta-row sans">
+            <span>
+              <svg class="meta-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              ai video production
+            </span>
+            <span class="meta-highlight">trainee: soumya</span>
+          </div>
+        </div>
+
+        <div class="params-box">
+          <h4 class="params-label sans">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+            assignment parameters
+          </h4>
+          <p class="serif params-text">
+            deliver one high-fidelity edit per day (15–30s). ensure visual consistency and high-intent creative direction.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav" id="dayNav"></nav>
+
+    <!-- Content -->
+    <main id="dayContent"></main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-copy sans">© 2026 content studio labs</div>
+      <div class="footer-links">
+        <a href="https://contentstudio.co.in" class="footer-link sans">contentstudio.co.in</a>
+        <div class="footer-dot"></div>
+        <a href="https://contentstudiolabs.ai/" class="footer-link highlight sans">contentstudiolabs.ai</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // SVG icon paths (inline, no dependencies)
+    const icons = {
+      coffee: '<path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/>',
+      activity: '<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>',
+      map: '<polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/>',
+      bone: '<path d="M17.3 3.7a2.4 2.4 0 0 1 3 3L7.7 20.3a2.4 2.4 0 0 1-3-3z"/><path d="m15.9 5.1 1-1a2 2 0 1 1 3 3l-1 1"/><path d="m8.1 18.9-1 1a2 2 0 1 1-3-3l1-1"/>',
+      lightbulb: '<path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/>',
+      moon: '<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>',
+      zap: '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>',
+      wind: '<path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/>'
+    };
+
+    function makeSVG(name) {
+      return `<svg viewBox="0 0 24 24">${icons[name]}</svg>`;
+    }
+
+    // Brief data
+    const days = [
+      {
+        day: "wednesday", date: "25th march 2026",
+        tasks: [
+          { taskNumber: 1, title: "brewcraft coffee", tagline: "your morning, perfected.", icon: "coffee", accentColor: "#a78bfa",
+            script: ["\u201cmy mornings used to be chaos. grab whatever, rush out.\u201d", "\u201cthen i tried brewcraft \u2014 single-origin, slow-roasted, delivered fresh.\u201d", "\u201cnow my morning is the best part of my day.\u201d", "\u201cone sip, and everything just... slows down.\u201d"],
+            notes: ["cozy lifestyle aesthetic \u2014 morning light, kitchen counter, steam rising.", "asmr close-ups: beans pouring, coffee dripping, first sip.", "warm, relaxed female ai voiceover. bgm: soft jazz / lo-fi.", "end on a slow-motion sip with logo fade-in."]
+          },
+          { taskNumber: 2, title: "pulsetrack fitness", tagline: "every rep counts.", icon: "activity", accentColor: "#60a5fa",
+            script: ["\u201ci used to work out with zero clue if i was making progress.\u201d", "\u201cpulsetrack changed that. real-time tracking. smart coaching.\u201d", "\u201cit\u2019s like having a personal trainer on your wrist.\u201d", "\u201cthirty days in, and i\u2019m not the same person anymore.\u201d"],
+            notes: ["high-energy fitness montage \u2014 gym, outdoors, home workouts.", "quick cuts synced to beat drops. show wearable screen with stats.", "motivational male ai voiceover. bgm: upbeat electronic / hip-hop.", "close with heart-rate animation morphing into brand logo."]
+          }
+        ]
+      },
+      {
+        day: "thursday", date: "26th march 2026",
+        tasks: [
+          { taskNumber: 3, title: "wanderly travel", tagline: "explore without a plan.", icon: "map", accentColor: "#fbbf24",
+            script: ["\u201ceveryone said i needed an itinerary. every hour booked.\u201d", "\u201ci said no. i opened wanderly and let it surprise me.\u201d", "\u201ca hidden waterfall in bali. a rooftop cafe in lisbon.\u201d", "\u201cthe best trips are the ones you don\u2019t plan.\u201d"],
+            notes: ["dreamy travel montage \u2014 drone shots, golden-hour, markets.", "subtle phone ui showing wanderly app recommendations.", "adventurous, young female ai voiceover. bgm: indie folk.", "end with passport stamp animation revealing the logo."]
+          },
+          { taskNumber: 4, title: "mellow pet foods", tagline: "because they deserve real food.", icon: "bone", accentColor: "#34d399",
+            script: ["\u201ci read the label on his old food. couldn\u2019t pronounce half of it.\u201d", "\u201cswitched to mellow \u2014 real chicken, real vegetables.\u201d", "\u201che\u2019s got more energy. his coat is shinier.\u201d", "\u201cif i wouldn\u2019t eat it, why would i feed it to him?\u201d"],
+            notes: ["heartwarming pet + owner story \u2014 golden retriever.", "clean kitchen aesthetic. show fresh ingredients in bowl.", "genuine, caring female ai voiceover. bgm: warm acoustic.", "end with dog looking up happily, logo fade-in."]
+          }
+        ]
+      },
+      {
+        day: "friday", date: "27th march 2026",
+        tasks: [
+          { taskNumber: 5, title: "lumos study lamp", tagline: "light the way to focus.", icon: "lightbulb", accentColor: "#818cf8",
+            script: ["\u201clate nights. tired eyes. that cheap desk lamp wasn\u2019t helping.\u201d", "\u201clumos adjusts \u2014 cool light for focus, warm light for winding down.\u201d", "\u201cmy eyes stopped hurting. my focus got sharper.\u201d", "\u201csometimes the smallest change makes the biggest difference.\u201d"],
+            notes: ["study / wfh aesthetic \u2014 clean desk, books, laptop.", "smooth transition showing lamp shifting color temperatures.", "calm, studious male ai voiceover. bgm: ambient / soft piano.", "end with time-lapse of lamp shifting from cool to warm."]
+          },
+          { taskNumber: 6, title: "drift sleep co.", tagline: "fall asleep faster. wake up better.", icon: "moon", accentColor: "#c084fc",
+            script: ["\u201ci\u2019d lie awake for hours. staring at the ceiling. mind racing.\u201d", "\u201cdrift\u2019s weighted blanket and pillow mist \u2014 it sounds too simple.\u201d", "\u201cbut ten minutes in, i was gone. deep, heavy, perfect sleep.\u201d", "\u201ci don\u2019t dread bedtime anymore. i look forward to it.\u201d"],
+            notes: ["serene bedroom setting \u2014 moonlight, soft fabrics, mist spray.", "visual contrast: tossing/turning vs. peaceful, still sleep.", "whisper-soft female ai voiceover. bgm: ambient pads.", "end with slow fade to black, logo appearing like a soft glow."]
+          }
+        ]
+      },
+      {
+        day: "saturday", date: "28th march 2026",
+        tasks: [
+          { taskNumber: 7, title: "zestbite snack bars", tagline: "fuel that actually tastes good.", icon: "zap", accentColor: "#f472b6",
+            script: ["\u201cevery healthy snack bar i\u2019ve tried tasted like cardboard.\u201d", "\u201czestbite? mango chili. dark chocolate sea salt.\u201d", "\u201cit\u2019s got protein, fibre, zero junk \u2014 and it actually slaps.\u201d", "\u201chealthy doesn\u2019t have to mean boring.\u201d"],
+            notes: ["vibrant visuals \u2014 bright colors, ingredient explosions.", "close-up of bar breaking in slow-mo showing ingredients.", "energetic young male ai voiceover. bgm: upbeat pop / funk.", "end with three flavors landing on screen, logo stamp."]
+          },
+          { taskNumber: 8, title: "aura home fragrance", tagline: "set the mood. without a word.", icon: "wind", accentColor: "#94a3b8",
+            script: ["\u201ci walked into her apartment and it just... hit different.\u201d", "\u201cit smelled like a rainy sunday morning in the mountains.\u201d", "\u201cshe said it was aura. one scent, and the whole room changed.\u201d", "\u201cyour space speaks before you do. make it unforgettable.\u201d"],
+            notes: ["aesthetic, moody interior \u2014 diffuser mist, candle glow.", "slow, graceful camera movements. visible scent mist.", "smooth, intimate male ai voiceover. bgm: r&b / chill beats.", "end with close-up of diffuser, mist curling into logo."]
+          }
+        ]
+      }
+    ];
+
+    // ── Render helpers ──
+    function renderCard(task) {
+      const notesHTML = task.notes.map(n =>
+        `<li class="note-item"><div class="note-dot"></div><span>${n}</span></li>`
+      ).join('');
+
+      const scriptHTML = task.script.map(l =>
+        `<p class="script-line sans">${l}</p>`
+      ).join('');
+
+      return `
+        <div class="card">
+          <div class="glow" style="background-color:${task.accentColor}"></div>
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="icon-ring">${makeSVG(task.icon)}</div>
+              <div>
+                <span class="task-number sans">task ${task.taskNumber}</span>
+                <h3 class="card-title serif">${task.title}</h3>
+                <p class="card-tagline serif">${task.tagline}</p>
+              </div>
+            </div>
+            <div>
+              <h4 class="section-label sans">script direction</h4>
+              <div class="script-lines">${scriptHTML}</div>
+            </div>
+            <div class="notes-section">
+              <h4 class="section-label notes-label sans">production notes</h4>
+              <ul class="notes-list">${notesHTML}</ul>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    function renderDay(day) {
+      const cardsHTML = day.tasks.map(renderCard).join('');
+      return `
+        <div class="day-header">
+          <div class="day-title-row">
+            <h2 class="day-title serif">${day.day}</h2>
+            <div class="day-line"></div>
+          </div>
+          <span class="day-date sans">${day.date}</span>
+        </div>
+        <div class="cards-grid">${cardsHTML}</div>`;
+    }
+
+    // ── Init ──
+    (function init() {
+      // Spaced subtitle
+      const subEl = document.getElementById('titleSub');
+      'task briefs'.split('').forEach(ch => {
+        const span = document.createElement('span');
+        span.textContent = ch === ' ' ? '\u00A0' : ch;
+        subEl.appendChild(span);
+      });
+
+      // Build nav & content
+      const nav = document.getElementById('dayNav');
+      const content = document.getElementById('dayContent');
+
+      days.forEach((day, idx) => {
+        // Nav button
+        const btn = document.createElement('button');
+        btn.className = 'nav-btn' + (idx === 0 ? ' active' : '');
+        btn.textContent = `day 0${idx + 1}`;
+        btn.setAttribute('data-idx', idx);
+        btn.addEventListener('click', () => switchDay(idx));
+        nav.appendChild(btn);
+
+        // Day section
+        const section = document.createElement('section');
+        section.className = 'day-section' + (idx === 0 ? ' active' : '');
+        section.setAttribute('data-day', idx);
+        section.innerHTML = renderDay(day);
+        content.appendChild(section);
+      });
+    })();
+
+    function switchDay(idx) {
+      document.querySelectorAll('.nav-btn').forEach((btn, i) => {
+        btn.classList.toggle('active', i === idx);
+      });
+      document.querySelectorAll('.day-section').forEach((sec, i) => {
+        sec.classList.toggle('active', i === idx);
+      });
+    }
+  </script>
+</body>
+</html>
